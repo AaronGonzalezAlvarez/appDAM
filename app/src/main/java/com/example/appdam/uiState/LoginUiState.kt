@@ -9,6 +9,7 @@ data class LoginUiState(
     val password:String = "usuario",
     val message:Boolean = false,
     val text:String = "",
+    val ip:String = "192.168.1.105",
     val progress:Boolean = false,
     val iconPass: ImageVector = Icons.Filled.VisibilityOff,
     val seePass: Boolean = false

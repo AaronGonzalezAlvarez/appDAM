@@ -1,5 +1,6 @@
 package com.example.appdam.viewModels
 
+import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -8,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavHostController
 import com.example.appdam.nav.AppNav
 import com.example.appdam.nav.Routes
+import com.example.appdam.retrofit.Retrofit
 import com.example.appdam.retrofit.model.login.Login
 import com.example.appdam.retrofit.objects.LoginRetrofit
 import com.example.appdam.uiState.LoginUiState
@@ -27,6 +29,14 @@ class LoginViewModel : ViewModel() {
         _uiState.update { currentState ->
             currentState.copy(
                 username = user
+            )
+        }
+    }
+
+    fun ipChange(ip: String) {
+        _uiState.update { currentState ->
+            currentState.copy(
+                ip = ip
             )
         }
     }
@@ -73,6 +83,10 @@ class LoginViewModel : ViewModel() {
         val pass = _uiState.value.password
         if (userName.isNotEmpty() && pass.isNotEmpty()) {
             viewModelScope.launch {
+                Log.v("CAmbioIP", Retrofit.baseUrl)
+                //Retrofit.baseUrl = "http://${_uiState.value.ip}:8080/"
+                Retrofit.setUrl("http://${_uiState.value.ip}:8080/")
+                Log.v("CAmbioIP", Retrofit.baseUrl)
                 val result: Boolean = LoginRetrofit.postLogin(Login(userName,pass))
                 if(result){
                     navController.navigate(route = Routes.ScreenMenu.route)

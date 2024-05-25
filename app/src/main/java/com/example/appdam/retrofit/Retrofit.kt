@@ -6,7 +6,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Retrofit {
 
-    var baseUrl: String = "http://192.168.1.105:8080/"
+    var baseUrl: String = "http://192.168.1.10:8080/"
+
+    // Método para cambiar la baseUrl
+    fun setUrl(newBaseUrl: String) {
+        baseUrl = newBaseUrl
+        // Resetear retrofit para que se cree una nueva instancia
+        retrofit = null
+        retrofit = Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(getOkHttpClient()) // Usa el cliente personalizado aquí
+            .build()
+    }
 
     fun getOkHttpClient(): OkHttpClient {
         try {
@@ -17,7 +29,7 @@ object Retrofit {
             throw RuntimeException(e)
         }
     }
-    val retrofit = Retrofit.Builder()
+    var retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .client(getOkHttpClient()) // Usa el cliente personalizado aquí

@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ControlPointDuplicate
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -131,6 +132,26 @@ fun LoginScreen(
                                             )
                                         }
                                     }
+                                )
+
+                                Spacer(
+                                    modifier = Modifier
+                                        .padding(6.dp)
+                                )
+
+                                OutlinedTextField(
+                                    value = dataUiState.ip,
+                                    trailingIcon = {
+                                        Icon(
+                                            imageVector = Icons.Default.ControlPointDuplicate,
+                                            contentDescription = "ip",
+                                            tint = colorResource(id = R.color.icon)
+                                        )
+                                    },
+                                    onValueChange = {
+                                        viewModel.ipChange(it)
+                                    },
+                                    label = { Text(text = "IP") },
                                 )
                             }
                         }
