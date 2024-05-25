@@ -1,6 +1,5 @@
 package com.example.appdam.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -45,7 +44,6 @@ import com.example.appdam.components.TopBar
 import com.example.appdam.uiState.MenuUiState
 import com.example.appdam.viewModels.MenuViewModel
 import com.example.appdam.viewModels.UserInscriptionTodayViewModel
-import com.example.appdam.viewModels.UserInscriptionViewModel
 import kotlinx.coroutines.launch
 
 @Composable
@@ -238,7 +236,7 @@ fun MenuBodyUserInscriptionToday(
 
                                         ElevatedButton(
                                             colors= ButtonDefaults.elevatedButtonColors(containerColor = colorResource(id = R.color.btn)),
-                                            onClick = { viewModel.info(item.id) }
+                                            onClick = { viewModel.info(item.id,navController) }
                                         ) {
                                             Text("Mas informacióm")
                                         }

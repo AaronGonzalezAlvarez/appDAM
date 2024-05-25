@@ -2,6 +2,8 @@ package com.example.appdam.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavHostController
+import com.example.appdam.nav.Routes
 import com.example.appdam.retrofit.model.myInscription.MyInscription
 import com.example.appdam.retrofit.objects.ActivityRetrofit
 import com.example.appdam.retrofit.objects.LoginRetrofit
@@ -54,8 +56,8 @@ class UserInscriptionViewModel : ViewModel() {
         }
     }
 
-    fun info(id:Int){
-
+    fun info(id: Int, navController: NavHostController){
+        navController.navigate(route = Routes.ScreenActivity.route+"/${id}")
     }
 
     private fun reset(){

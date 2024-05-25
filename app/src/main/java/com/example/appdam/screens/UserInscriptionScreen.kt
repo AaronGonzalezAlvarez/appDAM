@@ -1,6 +1,5 @@
 package com.example.appdam.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,30 +13,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.AddAlarm
-import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.ContentPasteSearch
-import androidx.compose.material.icons.filled.LocalActivity
-import androidx.compose.material.icons.filled.SouthAmerica
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ElevatedButton
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -51,10 +39,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.appdam.R
-import com.example.appdam.components.ListActionDraw
 import com.example.appdam.components.ListDraw
 import com.example.appdam.components.TopBar
-import com.example.appdam.nav.Routes
 import com.example.appdam.uiState.MenuUiState
 import com.example.appdam.viewModels.MenuViewModel
 import com.example.appdam.viewModels.UserInscriptionViewModel
@@ -247,7 +233,7 @@ fun MenuBodyUserInscription(
 
                                 ElevatedButton(
                                     colors= ButtonDefaults.elevatedButtonColors(containerColor = colorResource(id = R.color.btn)),
-                                    onClick = { viewModel.info(item.id) }) {
+                                    onClick = { viewModel.info(item.id,navController) }) {
                                     Text("Mas informacióm")
                                 }
                             }
